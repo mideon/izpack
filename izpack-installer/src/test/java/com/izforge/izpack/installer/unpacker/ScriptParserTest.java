@@ -39,7 +39,7 @@ public class ScriptParserTest {
   public void givenPlainTextFileAndSpecialCharactersInVariables_whenParseWithDefaultEncoding_contentIsWrittenWithDefaultEncoding() throws Exception {
     Variables variables = new DefaultVariables();
     variables.set("pippo", "PIPPO");
-    variables.set("pluto", "plutò");
+    variables.set("pluto", "plut");
     VariableSubstitutor replacer = new VariableSubstitutorImpl(variables);
     PlatformModelMatcher matcher = new PlatformModelMatcher(new Platforms(), Platforms.WINDOWS);
     ScriptParser scriptParser = new ScriptParser(replacer, matcher);
@@ -52,14 +52,14 @@ public class ScriptParserTest {
 
     String content = FileUtils.readFileToString(file, Charset.defaultCharset());
     Assert.assertThat(content, containsString("PIPPO"));
-    Assert.assertThat(content, containsString("plutò"));
+    Assert.assertThat(content, containsString("plut"));
   }
 
   @Test
   public void givenPlainTextFileAndSpecialCharactersInVariables_whenParseWithUtf8Encoding_contentIsWrittenWithUtf8Encoding() throws Exception {
     Variables variables = new DefaultVariables();
     variables.set("pippo", "PIPPO");
-    variables.set("pluto", "plutò");
+    variables.set("pluto", "plut");
     VariableSubstitutor replacer = new VariableSubstitutorImpl(variables);
     PlatformModelMatcher matcher = new PlatformModelMatcher(new Platforms(), Platforms.WINDOWS);
     ScriptParser scriptParser = new ScriptParser(replacer, matcher);
@@ -72,7 +72,7 @@ public class ScriptParserTest {
 
     String content = FileUtils.readFileToString(file, "UTF-8");
     Assert.assertThat(content, containsString("PIPPO"));
-    Assert.assertThat(content, containsString("plutò"));
+    Assert.assertThat(content, containsString("plut"));
   }
 
   @Test
@@ -82,7 +82,7 @@ public class ScriptParserTest {
     PlatformModelMatcher matcher = new PlatformModelMatcher(new Platforms(), Platforms.WINDOWS);
     ScriptParser scriptParser = new ScriptParser(replacer, matcher);
 
-    FileUtils.writeStringToFile(file, "PIPPO\nplutò\n", "UTF-8");
+    FileUtils.writeStringToFile(file, "PIPPO\nplut\n", "UTF-8");
 
     ParsableFile parsable = new ParsableFile(file.getAbsolutePath(), SubstitutionType.TYPE_PLAIN, "UTF-8", new ArrayList<OsModel>());
 
@@ -90,7 +90,7 @@ public class ScriptParserTest {
 
     String content = FileUtils.readFileToString(file, "UTF-8");
     Assert.assertThat(content, containsString("PIPPO"));
-    Assert.assertThat(content, containsString("plutò"));
+    Assert.assertThat(content, containsString("plut"));
   }
 
   @Test
