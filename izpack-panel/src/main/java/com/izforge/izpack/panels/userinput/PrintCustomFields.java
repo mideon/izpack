@@ -57,6 +57,7 @@ public class PrintCustomFields implements PanelAction {
                     adata.setVariable("xReportMaketIdent", props.getProperty("xReportMaketIdent", adata.getVariable("xReportMaketIdent")));
                     adata.setVariable("printerTestMaketIdent", props.getProperty("printerTestMaketIdent", adata.getVariable("printerTestMaketIdent")));
                     adata.setVariable("defaultSelectorIdent", props.getProperty("defaultSelectorIdent", adata.getVariable("defaultSelectorIdent")));
+                    adata.setVariable("printerOrderNumberMaketIdent", props.getProperty("printerOrderNumberMaketIdent", adata.getVariable("printerOrderNumberMaketIdent")));
                 } else {
                     Messages messages = adata.getMessages();
                     handler.emitError(messages.get("UserInputPanel.file.notfile.caption"), messages.get("UserInputPanel.file.notfile.message"));
